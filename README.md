@@ -56,9 +56,3 @@ python scripts/train_deepglobe.py
 
 Checkpoints are saved under `save_dir` (default: `outputs/checkpoints/`).
 The best 3 checkpoints (by validation mIoU) are kept.
-
-## Notes (why the code was cleaned up)
-
-- Colab-specific lines were removed or moved into configuration.
-- Dataset download/unzip is not embedded inside the training loop.
-- Side-effect-heavy patterns (e.g., `global cfg`) were removed: configuration is passed explicitly to functions.
