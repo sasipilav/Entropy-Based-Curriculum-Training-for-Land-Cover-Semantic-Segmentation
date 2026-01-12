@@ -1,0 +1,41 @@
+# LoveDA experiment config
+dataset: loveda
+data_dir: data/LoveDA   # <-- change to your local LoveDA root (contains Train/Val[/Test])
+save_dir: outputs/checkpoints
+
+seed: 2478
+device: cuda
+
+# model
+arch: deeplabv3plus
+backbone: resnet152
+in_channels: 3
+num_classes: 7
+ignore_index: 255
+
+# training
+num_epochs: 50
+batch_size: 8
+num_workers: 4
+crop_size: 768
+eval_crop_size: 768
+crops_per_image: 1
+
+lr: 0.0002
+weight_decay: 0.0002
+poly_power: 0.9
+min_lr: 0.000005
+
+# loss weights
+ce_weight: 1.0
+dice_weight: 1.0
+
+# EBCT
+ebct:
+  use: false
+  warmup_epochs: 5
+  start_pct: 0.5
+  end_pct: 1.0
+  end_epoch: 30
+  recalc_interval: 5
+  entropy_num_crops: 1

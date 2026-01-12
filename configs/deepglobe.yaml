@@ -1,0 +1,51 @@
+# DeepGlobe experiment config
+dataset: deepglobe
+data_dir: data/DeepGlobe  # <-- change to folder that contains metadata.csv
+save_dir: outputs/checkpoints
+
+seed: 42
+device: cuda
+valid_frac: 0.1
+
+# model
+arch: deeplabv3plus
+backbone: resnet152
+in_channels: 3
+num_classes: 7
+ignore_index: 6
+label_smoothing: 0.05
+
+# training
+num_epochs: 50
+batch_size: 8
+num_workers: 4
+crop_size: 1024
+crops_per_image: 2
+
+lr: 0.0002
+weight_decay: 0.0002
+poly_power: 0.9
+min_lr: 0.000005
+
+# boundary-guided sampling (your notebook's feature)
+boundary_sampling:
+  use: true
+  warmup_epochs: 2
+  p_max: 0.3
+  focus_class: 2
+  neighbor_classes: [1]
+  kernel_size: 3
+  max_tries: 15
+
+# EBCT
+ebct:
+  use: false
+  warmup_epochs: 5
+  start_pct: 0.5
+  end_pct: 1.0
+  end_epoch: 35
+  recalc_interval: 5
+  entropy_num_crops: 2
+
+# optional
+five_crop_eval: false

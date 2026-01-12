@@ -1,0 +1,14 @@
+# Core
+numpy
+pandas
+matplotlib
+opencv-python
+PyYAML
+
+# Deep learning
+torch
+torchvision
+segmentation-models-pytorch
+
+# Augmentations
+albumentations
